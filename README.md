@@ -1,6 +1,6 @@
-## Welltravel Setup
+## `Welltravel Setup`
 
-This script will do the basic setup for these WellTravel projects for MAC ( `meta affiliate agent keycloak` )
+This script will do the basic setup for these WellTravel projects ( `meta affiliate agent keycloak` )
 
 The script will...
 
@@ -14,15 +14,19 @@ The script will...
 
 You can include other projects by modifying the `PROJECT_NAMES` array at top.
 
-### Prerequisite
+### `Prerequisite`
 
 - Create a Personal Access Token on GitHub which has the scopes `repo, write:packages, read:packages and delete:packages.`
-- [nvm](https://github.com/nvm-sh/nvm): for installing node versions
-- [rbenv](https://github.com/rbenv/rbenv): for installing ruby versions
+- Login in Bit from terminal using your credentials
+  - Create an account in https://node.bit.dev
+  - run from terminal `yarn global add bit-bin`
+  - run from terminal `npm login --registry=https://node.bit.dev --scope=@bit`
+- Install [nvm](https://github.com/nvm-sh/nvm): for installing node versions
+- Install [rbenv](https://github.com/rbenv/rbenv): for installing ruby versions
 
-### Steps to Run
+### `Steps to Run`
 
-- Clone the repo
-- Edit setup.sh and modify the `TOKEN` & `GIT_USERNAME` variable at line 7 & 8
-- Make setup.sh executable - `chmod +x setup.sh`
-- `./setup.sh &> output.txt` ( The script output will be saved in a output.txt file. If you want to see the output in terminal, run `./setup.sh` only )
+  1. Clone the repo
+  2. Edit setup.sh and modify the `TOKEN` & `GIT_USERNAME` variable at top
+  3. Make setup.sh executable - `chmod +x setup.sh`
+  4. `./setup.sh &> output.txt` ( The script output will be saved in a output.txt file. If you want to see the output in terminal, run `./setup.sh` only )

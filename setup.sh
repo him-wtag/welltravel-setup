@@ -2,7 +2,7 @@
 
 declare -a PROJECT_NAMES=(meta keycloak affiliates agent)
 
-# put these lines in your ~/.zshrc ( or ~/.bashrc for linux ) for future use
+# put the envs in in ~/.zshrc ( or ~/.bashrc for linux ) for future use
 # Token scope: repo, write:packages, read:packages and delete:packages.
 
 # TOKEN=<github personal access token>
@@ -16,7 +16,7 @@ if [[ $TOKEN && $GIT_USERNAME ]]; then
   export BUNDLE_GITHUB__COM=$TOKEN
 else
   echo -e "\e[31mPlease modify the script's TOKEN and GITHUB_USERNAME value \e[0m"
-  echo -e "\e[31mOr, Comment out the if block if you have these variable in .zshrc\e[0m"
+  echo -e "\e[31mOr, Comment out the code block if you have these variable in .zshrc\e[0m"
 
   exit 1
 fi
