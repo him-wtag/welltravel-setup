@@ -133,8 +133,6 @@ function main() {
     warn "\n### Project Name: $PROJECT ###"
     cd $dir
     
-    # ! [[ $PROJECT == 'meta' ]] && continue 
-
     setup_ruby
     setup_bundle
     setup_yarn
