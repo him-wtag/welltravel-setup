@@ -2,6 +2,19 @@
 
 declare -a PROJECT_NAMES=(meta keycloak affiliates agent)
 
+# put these lines in your ~/.zshrc ( or ~/.bashrc for linux ) for future use
+# Token scope: repo, write:packages, read:packages and delete:packages.
+TOKEN=<github personal access token>
+GIT_USERNAME=<your github username>
+
+export NPM_TOKEN=$TOKEN
+export GITHUB_PACKAGES_TOKEN=$TOKEN
+export GH_PACKAGES_ACCESS_TOKEN=$TOKEN
+export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="$GIT_USERNAME:$TOKEN"
+export BUNDLE_GITHUB__COM=$TOKEN
+
+source ~/.zshrc
+
 function error { echo -e "\n\e[31m$@\e[0m" } # RED
 function info { echo -e "\n\e[32m$@\e[0m" }  # GREEN
 function warn { echo -e "\n\e[33m$@\e[0m" }  # ORANGE
@@ -21,20 +34,14 @@ seeding_message="Seeding database..."
 
 info $welcome_message
 
-# put these lines in your ~/.zshrc ( or ~/.bashrc for linux ) for future use
-TOKEN=<github personal access token>
-GIT_USERNAME=<your github username>
+info "Installing Node versions"
 
-export NPM_TOKEN=$TOKEN
-export GITHUB_PACKAGES_TOKEN=$TOKEN
-export GH_PACKAGES_ACCESS_TOKEN=$TOKEN
-export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="$GIT_USERNAME:$TOKEN"
-export BUNDLE_GITHUB__COM=$TOKEN
-
-source ~/.zshrc
-
+source ~/.nvm/nvm.sh  # make nvm command available, install nvm first if you didn't already
+nvm install 8.17.0 
+nvm install 12.18.2
 
 debug 'Clonnig Projects in ...'
+
 mkdir welltravel && cd welltravel
 for project in $PROJECT_NAMES; do git clone git@github.com:wtag/$project.git; done
 
@@ -111,12 +118,6 @@ function setup_database() {
 
   [[ -f $dir/db/seeds.rb ]] && debug $seeding_message && rake db:seed
 }
-
-info "Installing Node versions"
-
-source ~/.nvm/nvm.sh  # make nvm command available, install nvm first if you didn't already
-nvm install 8.17.0 
-nvm install 12.18.2
 
 function main() {
   DIR=$PWD
