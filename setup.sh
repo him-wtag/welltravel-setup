@@ -7,7 +7,7 @@ function info { echo -e "\n\e[32m$@\e[0m" }  # GREEN
 function warn { echo -e "\n\e[33m$@\e[0m" }  # ORANGE
 function debug { echo -e "\n\e[34m$@\e[0m" } # BLUE
 
-welcome_message="This script will do the basic setup for Welltravel Projects: $PROJECT_NAMES.\nInitating script..."
+welcome_message="This script will clone these projects: $PROJECT_NAMES and do the basic setup.\nInitating script..."
 bundler_failed_message='Failed to install gem bundler'
 bundle_failed_message='Failed to run bundle install'
 bundle_skip_message='No Gemfile.lock found! Skipping bundle install...'
@@ -21,21 +21,21 @@ seeding_message="Seeding database..."
 
 info $welcome_message
 
-# put these lines in your ~/.bashrc or ~/.zshrc
-# TOKEN=<github personal access token>
-# GIT_USERNAME=<your github username>
+# put these lines in your ~/.zshrc ( or ~/.bashrc for linux ) for future use
+TOKEN=<github personal access token>
+GIT_USERNAME=<your github username>
 
-# export NPM_TOKEN=$TOKEN
-# export GITHUB_PACKAGES_TOKEN=$TOKEN
-# export GH_PACKAGES_ACCESS_TOKEN=$TOKEN
-# export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="$GIT_USERNAME:$TOKEN"
-# export BUNDLE_GITHUB__COM=$TOKEN
+export NPM_TOKEN=$TOKEN
+export GITHUB_PACKAGES_TOKEN=$TOKEN
+export GH_PACKAGES_ACCESS_TOKEN=$TOKEN
+export BUNDLE_RUBYGEMS__PKG__GITHUB__COM="$GIT_USERNAME:$TOKEN"
+export BUNDLE_GITHUB__COM=$TOKEN
+
 source ~/.zshrc
 
 
-
 debug 'Clonnig Projects in ...'
-# mkdir welltravel && cd welltravel
+mkdir welltravel && cd welltravel
 for project in $PROJECT_NAMES; do git clone git@github.com:wtag/$project.git; done
 
 # Install these gems with the flag, to avoid compilation error
