@@ -115,8 +115,8 @@ function setup_database() {
 info "Installing Node versions"
 
 source ~/.nvm/nvm.sh  # make nvm command available, install nvm first if you didn't already
-# nvm install 8.17.0 
-# nvm install 12.18.2
+nvm install 8.17.0 
+nvm install 12.18.2
 
 function main() {
   DIR=$PWD
